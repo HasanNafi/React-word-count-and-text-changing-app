@@ -11,31 +11,36 @@ export default function TextForms(props) {
         // console.log("Uppercase is clicked" + text)
         let newText =text.toUpperCase();
         setText(newText)
+        props.showAlert("Converted to uppercase" , "success")
     }
 
     const handleLowClick =()=>{
       let newText =text.toLowerCase();
       setText(newText)
+      props.showAlert("Converted to lowercase" , "success")
     }
     const handleCapitalizeClick =()=>{
       let newText =text.toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
       // let newText =text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
       setText(newText)
+      props.showAlert("Capitalized all word" , "success")
     }
     
     const handleEmailExtract =()=>{
       let matchedEmails= text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
       document.getElementById("email").innerHTML = matchedEmails
-      
+      props.showAlert("All email extracted" , "success")
     }
     const speak = () => {
       let msg = new SpeechSynthesisUtterance(text);
       window.speechSynthesis.speak(msg);
+      props.showAlert("Speaking mode enabled" , "success")
     }
 
     const handleCopy = ()=>{
       copy(text);
       alert('Copied');
+      props.showAlert("Text copied to clipboard" , "success")
       // var text = document.getElementById("mybox");
       // text.Select();
       // navigator.clipboard.writeText(text.value);
@@ -45,11 +50,13 @@ export default function TextForms(props) {
     const handleExtraSpaces = ()=>{
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "))
+      props.showAlert("Removed all extra spaces" , "success")
     }
 
     const handleClear =()=>{
       let newText ="";
       setText(newText)
+      props.showAlert("Cleared text field" , "success")
     }
     const handleOnChange =(event)=>{
         // console.log("Handle Onchange")
