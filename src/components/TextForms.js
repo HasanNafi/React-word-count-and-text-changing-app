@@ -89,7 +89,7 @@ export default function TextForms(props) {
     
     <div className="container my-3" style={{color:props.mode==='light'?'black':'white'}}>
       <h1>Your Text Summary</h1>
-      <p>{text.split(" ").length} words and {text.length} characters</p>
+      <p>{text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\+/g, '').length} characters</p>
       <p>It will take {0.008 * text.split(" ").length} minutes to read</p>
     </div>
 

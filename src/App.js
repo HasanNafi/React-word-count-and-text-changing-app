@@ -4,6 +4,11 @@ import TextForms from "./components/TextForms";
 import About from "./components/About";
 import React,{ useState } from 'react';
 import Alert from "./components/Alert";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -32,20 +37,23 @@ function App() {
       showAlert("Light mode has been enabled", "success")
     }
   }
+  
   return (
     <>
+    <Router>
       <Navbar title="TextUtils" home="Home" aboutText="About Us" mode={mode} toggleMode={toggleMode}/> 
 
       {/* <Navbar title="Textutils"/>  */}
       {/* <Navbar/>  */}
       <div><Alert alert={alert}/></div>
       <div className="container my-3">
-          <TextForms showAlert = {showAlert} heading="Enter the text to analyze" mode={mode}/>
+          <Routes>
+            {/* using "exact" before path="" is necessary otherwise react matches partially and will load another page */}
+            <Route exact path="/about" element={<About mode={mode}/>} />
+            <Route exact path="/" element={<TextForms heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />} />
+          </Routes>
       </div>
-      <div className="container my-3">
-        <About mode={mode}/>
-      </div>
-      
+    </Router>
     </>
   );
 }
