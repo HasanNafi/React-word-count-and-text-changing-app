@@ -29,12 +29,12 @@ function App() {
     if(mode === 'light'){
       setMode ('dark')
       document.body.style.backgroundColor = '#042743';
-      showAlert("Dark mode has been enabled", "success")
+      showAlert(" Dark mode has been enabled", "success")
     }
     else{
       setMode ('light')
       document.body.style.backgroundColor = 'white';
-      showAlert("Light mode has been enabled", "success")
+      showAlert(" Light mode has been enabled", "success")
     }
   }
   
@@ -50,7 +50,7 @@ function App() {
           <Routes>
             {/* using "exact" before path="" is necessary otherwise react matches partially and will load another page */}
             <Route exact path="/about" element={<About mode={mode}/>} />
-            <Route exact path="/" element={<TextForms heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />} />
+            <Route exact path="/" element={<TextForms heading="TextUtils - Word counter, Character counter, Remove Extra Spaces"  mode={mode} showAlert={showAlert} />} />
           </Routes>
       </div>
     </Router>
