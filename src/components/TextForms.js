@@ -68,6 +68,7 @@ export default function TextForms(props) {
     const handleClear =()=>{
       let newText ="";
       setText(newText)
+      document.getElementById("email").innerHTML = ""
       props.showAlert(" Cleared text field" , "success")
     }
     const handleOnChange =(event)=>{
